@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.calibration.metcal.mapper.MetTeamMapper">
+    <resultMap id="metTeamDataMap" type="com.calibration.metcal.mapper.MetTeamDto">
+        <result property="calibrationDate" column="C2301"/>
+        <result property="nextCalibrationDate" column="C2303"/>
+        <result property="temperature" column="C2311"/>
+        <result property="humidity" column="C2312"/>
+        <result property="receiveDate" column="C2316"/>
+        <result property="calibrationResult" column="C2323"/>
+        <result property="reportNo" column="C2395"/>
+        <result property="customer" column="K4602"/>
+        <result property="customerEn" column="K4601"/>
+        <result property="customerAddress" column="K4603"/>
+        <result property="customerAddressEn" column="K4606"/>
+        <result property="registerNo" column="K4605"/>
+        <result property="remarks" column="K4608"/>
+        <result property="deviceNo" column="I4201"/>
+        <result property="deviceManufacturer" column="I4202"/>
+        <result property="deviceModel" column="I4203"/>
+        <result property="deviceName" column="I4204"/>
+        <result property="deviceNameEn" column="I4206"/>
+        <result property="calibrationAddress" column="I4214"/>
+        <result property="nominal" column="test_desc"/>
+        <result property="measured" column="varq"/>
+        <result property="upperLimit" column="upper_limit"/>
+        <result property="lowerLimit" column="lower_limit"/>
+        <result property="range" column="remark"/>
+        <result property="status" column="PointPassFail"/>
+    </resultMap>
+
+    <select id="getMetTeamData2" parameterType="string" resultType="map">
+        {call Ver_8_Cert_Sp(#{callSheetId})}
+    </select>
+
+    <select id="getMetTeamData" parameterType="string" resultMap="metTeamDataMap">
+        {call Ver_8_Cert_Sp(#{callSheetId})}
+    </select>
+</mapper>
